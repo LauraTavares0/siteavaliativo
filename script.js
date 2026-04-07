@@ -1,26 +1,108 @@
-// 1. Variáveis e Tipos de Dados
-let nome = "Aprendiz"; // String
-const idade = 25;       // Número (constante)
-let logado = true;      // Booleano
+const profissoes = [
+{
+    nome: "Especialista em IA",
+    imagem: "https://via.placeholder.com/150",
+    descricao: "Cria inteligências artificiais.",
+    curiosidade: "Alta demanda no futuro."
+},
+{
+    nome: "Engenheiro Ambiental",
+    imagem: "https://via.placeholder.com/150",
+    descricao: "Protege o meio ambiente.",
+    curiosidade: "Essencial para o planeta."
+},
+{
+    nome: "Cibersegurança",
+    imagem: "https://via.placeholder.com/150",
+    descricao: "Protege sistemas.",
+    curiosidade: "Muito valorizado."
+}
+];
 
-// 2. Operações Básicas
-let soma = 10 + 5;
-let mensagem = "Olá, " + nome;
+// MOSTRAR PROFISSÕES
+if (document.getElementById("lista")) {
+    let lista = document.getElementById("lista");
 
-// 3. Estrutura Condicional (if/else)
-if (idade >= 18) {
-    console.log(mensagem + "! Você é maior de idade."); // Mostra no console do navegador
-} else {
-    console.log("Menor de idade.");
+    profissoes.forEach((p, i) => {
+        lista.innerHTML += `
+        <div class="card">
+            <h3>${p.nome}</h3>
+            <img src="${p.imagem}">
+            <br>
+            <button onclick="verDetalhes(${i})">Escolher</button>
+        </div>
+        `;
+    });
 }
 
-// 4. Estrutura de Repetição (Loop)
-for (let i = 0; i < 3; i++) {
-    console.log("Contagem: " + i);
+// IR PARA DETALHES
+function verDetalhes(i) {
+    localStorage.setItem("profissao", i);
+    window.location.href = "detalhes.html";
 }
 
-// 5. Função Básica
-function saudar(usuario) {
-    return "Bem-vindo, " + usuario;
+// CARREGAR DETALHES
+if (document.getElementById("nome")) {
+    let i = localStorage.getItem("profissao");
+    let p = profissoes[i];
+
+    document.getElementById("nome").innerText = p.nome;
+    document.getElementById("imagem").src = p.imagem;
+    document.getElementById("descricao").innerText = p.descricao;
+    document.getElementById("curiosidade").innerText = p.curiosidade;
 }
-console.log(saudar(nome));
+
+// IR QUIZ
+function irQuiz() {
+    window.location.href = "quiz.html";
+}
+
+// QUIZ
+let perguntaAtual = 0;
+
+let pontos = {
+    ia: 0,
+    ambiente: 0,
+    seguranca: 0
+};
+
+const perguntas = [
+    "O que você gosta mais?",
+    "Como você se imagina?",
+    "Qual área prefere?"
+];
+
+function carregarPergunta() {
+    if (document.getElementById("pergunta")) {
+        document.getElementById("pergunta").innerText = perguntas[perguntaAtual];
+    }
+}
+
+function responder(tipo) {
+    pontos[tipo]++;
+    perguntaAtual++;
+
+    if (perguntaAtual < perguntas.length) {
+        carregarPergunta();
+    } else {
+        mostrarResultado();
+    }
+}
+
+function mostrarResultado() {
+    let maior = Object.keys(pontos).reduce((a, b) => pontos[a] > pontos[b] ? a : b);
+
+    let resultado = document.getElementById("resultado");
+
+    if (maior === "ia") {
+        resultado.innerText = "🤖 Especialista em IA!";
+    }
+    if (maior === "ambiente") {
+        resultado.innerText = "🌱 Engenheiro Ambiental!";
+    }
+    if (maior === "seguranca") {
+        resultado.innerText = "🛡️ Cibersegurança!";
+    }
+}
+
+carregarPergunta();
