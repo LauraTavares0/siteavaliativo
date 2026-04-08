@@ -92,6 +92,7 @@ const quiz = [
     ]
   }
 ]; 
+carregarPergunta();
 
 function carregarPergunta() {
     if (document.getElementById("pergunta")) {
