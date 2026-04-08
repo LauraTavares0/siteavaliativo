@@ -91,7 +91,7 @@ const quiz = [
       { texto: "Polícia", tipo: "seguranca" }
     ]
   }
-];
+]; 
 
 function carregarPergunta() {
     if (document.getElementById("pergunta")) {
