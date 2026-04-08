@@ -66,10 +66,31 @@ let pontos = {
     seguranca: 0
 };
 
-const perguntas = [
-    "O que você gosta mais?",
-    "Como você se imagina?",
-    "Qual área prefere?"
+const quiz = [
+  {
+    pergunta: "O que você gosta mais?",
+    respostas: [
+      { texto: "Programar", tipo: "ia" },
+      { texto: "Cuidar da natureza", tipo: "ambiente" },
+      { texto: "Proteger pessoas", tipo: "seguranca" }
+    ]
+  },
+  {
+    pergunta: "Como você se imagina?",
+    respostas: [
+      { texto: "Criando tecnologia", tipo: "ia" },
+      { texto: "Trabalhando ao ar livre", tipo: "ambiente" },
+      { texto: "Garantindo segurança", tipo: "seguranca" }
+    ]
+  },
+  {
+    pergunta: "Qual área prefere?",
+    respostas: [
+      { texto: "TI", tipo: "ia" },
+      { texto: "Biologia", tipo: "ambiente" },
+      { texto: "Polícia", tipo: "seguranca" }
+    ]
+  }
 ];
 
 function carregarPergunta() {
