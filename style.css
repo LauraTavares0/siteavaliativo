@@ -3,6 +3,11 @@ body {
     color: white;
     text-align: center;
 }
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
 
 nav {
     background: #1e1e3f;
@@ -20,4 +25,3 @@ nav a {
     margin: 10px;
     display: inline-block;
 }
-
