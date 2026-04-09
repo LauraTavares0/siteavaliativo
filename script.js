@@ -27,7 +27,7 @@ if (document.getElementById("lista")) {
         lista.innerHTML += `
         <div class="card">
             <h3>${p.nome}</h3>
-            <img src="${p.imagem}" alt="${p.nome}" width="150">
+            <img src="${p.imagem}">
             <br>
             <button onclick="verDetalhes(${i})">Escolher</button>
         </div>
