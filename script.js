@@ -1,7 +1,7 @@
 const profissoes = [
 {
     nome: "Especialista em IA",
-    imagem:"img2.jpg"
+    imagem:"https://www.uol.com.br/tilt/noticias/redacao/2023/05/15/especialista-em-ia-eles-ganham-ate-r-35-mil-por-mes-criando-ias.htm"
     descricao: "Cria inteligências artificiais.",
     curiosidade: "Alta demanda no futuro."
 },
@@ -27,7 +27,7 @@ if (document.getElementById("lista")) {
         lista.innerHTML += `
         <div class="card">
             <h3>${p.nome}</h3>
-            <img src="${p.imagem}">
+            <img src="${p.imagem}" alt="${p.nome}" width="150">
             <br>
             <button onclick="verDetalhes(${i})">Escolher</button>
         </div>
