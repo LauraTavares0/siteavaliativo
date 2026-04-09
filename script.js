@@ -1,7 +1,7 @@
 const profissoes = [
 {
     nome: "Especialista em IA",
-    imagem: "https://via.placeholder.com/150",
+    imagem:"https://www.uol.com.br/tilt/noticias/redacao/2023/05/15/especialista-em-ia-eles-ganham-ate-r-35-mil-por-mes-criando-ias.htm"
     descricao: "Cria inteligências artificiais.",
     curiosidade: "Alta demanda no futuro."
 },
