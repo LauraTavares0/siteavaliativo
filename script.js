@@ -75,6 +75,8 @@ const quiz = [
       { texto: "Proteger pessoas", tipo: "seguranca" }
     ]
   },
+
+  carregarPergunta(),
   {
     pergunta: "Como você se imagina?",
     respostas: [
@@ -83,6 +85,8 @@ const quiz = [
       { texto: "Garantindo segurança", tipo: "seguranca" }
     ]
   },
+
+  carregarPergunta(),
   {
     pergunta: "Qual área prefere?",
     respostas: [
@@ -92,6 +96,7 @@ const quiz = [
     ]
   }
 ]; 
+
 carregarPergunta();
 
 function carregarPergunta() {
