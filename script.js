@@ -75,8 +75,6 @@ const quiz = [
       { texto: "Proteger pessoas", tipo: "seguranca" }
     ]
   },
-
-  carregarPergunta(),
   {
     pergunta: "Como você se imagina?",
     respostas: [
@@ -85,8 +83,6 @@ const quiz = [
       { texto: "Garantindo segurança", tipo: "seguranca" }
     ]
   },
-
-  carregarPergunta(),
   {
     pergunta: "Qual área prefere?",
     respostas: [
@@ -97,38 +93,34 @@ const quiz = [
   }
 ]; 
 
-carregarPergunta();
 
 function carregarPergunta() {
-    if (document.getElementById("pergunta")) {
-        document.getElementById("pergunta").innerText = perguntas[perguntaAtual];
-    }
-}
+    const perguntaEl = document.getElementById("pergunta");
+    const botoesEl = document.getElementById("botoes");
 
-function responder(tipo) {
-    pontos[tipo]++;
-    perguntaAtual++;
+    if (!perguntaEl || !botoesEl) return;
 
-    if (perguntaAtual < perguntas.length) {
-        carregarPergunta();
-    } else {
-        mostrarResultado();
-    }
+    perguntaEl.innerText = quiz[perguntaAtual].pergunta;
+
+    botoesEl.innerHTML = "";
+
+    quiz[perguntaAtual].respostas.forEach(resposta => {
+        const botao = document.createElement("button");
+        botao.innerText = resposta.texto;
+        botao.onclick = () => responder(resposta.tipo);
+        botoesEl.appendChild(botao);
+    });
 }
 
 function mostrarResultado() {
-    let maior = Object.keys(pontos).reduce((a, b) => pontos[a] > pontos[b] ? a : b);
+    const resultado = document.getElementById("resultado");
 
-    let resultado = document.getElementById("resultado");
-
-    if (maior === "ia") {
-        resultado.innerText = "🤖 Especialista em IA!";
-    }
-    if (maior === "ambiente") {
-        resultado.innerText = "🌱 Engenheiro Ambiental!";
-    }
-    if (maior === "seguranca") {
-        resultado.innerText = "🛡️ Cibersegurança!";
+    if (pontos.ia > pontos.ambiente && pontos.ia > pontos.seguranca) {
+        resultado.innerText = "Você deveria seguir na área de TI ";
+    } else if (pontos.ambiente > pontos.seguranca) {
+        resultado.innerText = "Você deveria seguir na área ambiental ";
+    } else {
+        resultado.innerText = "Você deveria seguir na área de segurança ";
     }
 }
 
