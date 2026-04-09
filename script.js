@@ -93,7 +93,6 @@ const quiz = [
   }
 ]; 
 
-
 function carregarPergunta() {
     const perguntaEl = document.getElementById("pergunta");
     const botoesEl = document.getElementById("botoes");
