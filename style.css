@@ -26,8 +26,8 @@ nav a {
     display: inline-block;
 }
 
-p {
+.texto-principal {
     max-width: 800px;
     margin: 20px auto;
-    text-align: justify; /* isso sobrescreve o center */
+    text-align: justify;
 }
