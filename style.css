@@ -26,8 +26,7 @@ nav a {
     display: inline-block;
 }
 
-.texto-principal {
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: justify;
+.texto-principal p {
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
