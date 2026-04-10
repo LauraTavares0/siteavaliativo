@@ -91,8 +91,9 @@ const quiz = [
       { texto: "Polícia", tipo: "seguranca" }
     ]
   }
-]; 
+];
 
+// 🔥 FUNÇÃO QUE MOSTRA A PERGUNTA
 function carregarPergunta() {
     const perguntaEl = document.getElementById("pergunta");
     const botoesEl = document.getElementById("botoes");
@@ -111,16 +112,30 @@ function carregarPergunta() {
     });
 }
 
+// 🔥 FUNÇÃO QUE FALTAVA (ESSA É A CHAVE!)
+function responder(tipo) {
+    pontos[tipo]++;
+    perguntaAtual++;
+
+    if (perguntaAtual < quiz.length) {
+        carregarPergunta();
+    } else {
+        mostrarResultado();
+    }
+}
+
+// 🔥 RESULTADO FINAL
 function mostrarResultado() {
     const resultado = document.getElementById("resultado");
 
     if (pontos.ia > pontos.ambiente && pontos.ia > pontos.seguranca) {
-        resultado.innerText = "Você deveria seguir na área de TI ";
+        resultado.innerText = "Você deveria seguir na área de TI";
     } else if (pontos.ambiente > pontos.seguranca) {
-        resultado.innerText = "Você deveria seguir na área ambiental ";
+        resultado.innerText = "Você deveria seguir na área ambiental";
     } else {
-        resultado.innerText = "Você deveria seguir na área de segurança ";
+        resultado.innerText = "Você deveria seguir na área de segurança";
     }
 }
 
+// 🔥 INICIAR QUIZ
 carregarPergunta();
