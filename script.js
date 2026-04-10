@@ -52,12 +52,6 @@ if (document.getElementById("nome")) {
     document.getElementById("curiosidade").innerText = p.curiosidade;
 }
 
-// IR QUIZ
-function irQuiz() {
-    window.location.href = "quiz.html";
-}
-
-// QUIZ
 let perguntaAtual = 0;
 
 let pontos = {
@@ -93,26 +87,26 @@ const quiz = [
   }
 ];
 
-// 🔥 FUNÇÃO QUE MOSTRA A PERGUNTA
 function carregarPergunta() {
     const perguntaEl = document.getElementById("pergunta");
     const botoesEl = document.getElementById("botoes");
 
-    if (!perguntaEl || !botoesEl) return;
-
     perguntaEl.innerText = quiz[perguntaAtual].pergunta;
-
     botoesEl.innerHTML = "";
 
     quiz[perguntaAtual].respostas.forEach(resposta => {
         const botao = document.createElement("button");
         botao.innerText = resposta.texto;
-        botao.onclick = () => responder(resposta.tipo);
+
+        // 🔥 IMPORTANTE: evento de clique
+        botao.addEventListener("click", function () {
+            responder(resposta.tipo);
+        });
+
         botoesEl.appendChild(botao);
     });
 }
 
-// 🔥 FUNÇÃO QUE FALTAVA (ESSA É A CHAVE!)
 function responder(tipo) {
     pontos[tipo]++;
     perguntaAtual++;
@@ -124,7 +118,6 @@ function responder(tipo) {
     }
 }
 
-// 🔥 RESULTADO FINAL
 function mostrarResultado() {
     const resultado = document.getElementById("resultado");
 
@@ -137,5 +130,5 @@ function mostrarResultado() {
     }
 }
 
-// 🔥 INICIAR QUIZ
-carregarPergunta();
+// 🔥 GARANTE QUE CARREGA QUANDO A PÁGINA ABRE
+window.onload = carregarPergunta;
